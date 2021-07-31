@@ -1,0 +1,21 @@
+@import '../../styles/vars';
+
+.position {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.companyAndPeriod {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.companyName {
+  color: $color-brown;
+  font-weight: 600;
+}
+
+.bulletList {
+  padding-left: 20px
+}

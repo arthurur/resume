@@ -1,0 +1,70 @@
+@import './_vars';
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('../assets/fonts/century-gothic.ttf');
+}
+
+html,
+body {
+  font-family: 'Century Gothic', Courier;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all .1s ease;
+
+  &:hover {
+    background-color: $color-brown;
+    color: white;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  color: $color-brown-dark;
+  font-weight: 600;
+}
+
+.section-title {
+  color: $color-maroon-bacon;
+}
+
+li {
+  list-style: circle;
+  margin: 12px 0;
+}
+
+.padded-list {
+  padding-left: 16px;
+}
+
+.subtitle {
+  margin-bottom: 16px;
+}
+
+.content-block {
+  margin: 12px 0;
+
+  &--flex {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &--work {
+    border-bottom: solid 1px $color-brown;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+  }
+}
+
+.aux-info {
+  color: $color-pink-light;
+  font-weight: 600;;
+}

@@ -1,0 +1,16 @@
+@import '../../styles/vars';
+
+.skill {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 280px;
+}
+
+.skillLevelMark {
+  background-color: $color-pink-light;
+  height: 12px;
+  margin-left: 8px;
+  transform: rotate(45deg);
+  width: 12px;
+}
