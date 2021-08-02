@@ -6,11 +6,9 @@
   max-width: 1200px;
   min-height: 100vh;
   padding: 32px;
-}
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr;
   }
+
 }

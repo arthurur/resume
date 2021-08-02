@@ -16,7 +16,7 @@ function Experience({ position, duration, company, bullets }) {
     <div className="content-block content-block--work">
       <h3 className={styles.position}>{position}</h3>
       <div className={styles.companyAndPeriod}>
-        <a className={styles.companyName} href={company.link} target="_blank">
+        <a className="text-location" href={company.link} target="_blank">
           {company.name}
         </a>
         <span className="aux-info">{duration}</span>

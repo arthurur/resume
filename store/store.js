@@ -65,8 +65,8 @@ const initialState = {
       },
       bullets: [
         'Worked with the internal hiring management system, one of the most important internal applications',
-        'Had experience refactoring big chunks of old React code into a more modern implementation using hooks, context and other recent features',
-        'Focused on improving performance and optimizing re-renders'
+        'Had experience refactoring big chunks of old React code into a more modern implementation using hooks, context and other recent features, focusing on optimization and improving performance',
+        'Had the chance to work with people from multiple countries, cultures and timezones, improving communication efficiency in a remote environment'
       ]
     },
     {

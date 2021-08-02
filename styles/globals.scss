@@ -7,6 +7,10 @@
 html,
 body {
   font-family: 'Century Gothic', Courier;
+
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 }
 
 a {
@@ -67,4 +71,9 @@ li {
 .aux-info {
   color: $color-pink-light;
   font-weight: 600;;
+}
+
+.text-location {
+  color: $color-brown;
+  font-weight: 600;
 }

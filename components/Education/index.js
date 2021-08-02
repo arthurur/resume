@@ -6,10 +6,10 @@ export default function Education({ title, graduation, duration, university }) {
     <section className={styles.Education}>
       <h2 className="section-title">{title}</h2>
       <div className="content-block content-block--flex">
-        <span>{graduation}</span>
+        <h3>{graduation}</h3>
         <span className="aux-info">{duration}</span>
       </div>
-      <span>{university}</span>
+      <span className="text-location">{university}</span>
     </section>
   )
 }
