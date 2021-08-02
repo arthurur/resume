@@ -8,7 +8,7 @@ export const SKILL_SET_TYPES = {
 const initialState = {
   name: 'ARTHUR UBERTI ROLIM',
   personalInformation: [
-    { type: 'Address', value: 'Florianópolis, Santa Catarina, Brasil' },
+    { type: 'Address', value: 'Florianópolis, Santa Catarina, Brazil' },
     { type: 'Phone', value: '+55 (48) 99119-2737' },
     { type: 'Email', value: 'arthur_ur@hotmail.com' },
   ],
