@@ -1,21 +1,13 @@
 import styles from './sidebar.module.scss'
 
-import { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
-
 import Personal from '../Personal';
 import Skillset from '../Skillset';
 
-import {
-  getName,
-  getPersonalInformation,
-  getSkillsetList,
-} from '../../store/store';
+import { useArthur } from '../../contexts/ArthurContext';
 
 export default function Sidebar() {
-  const name = useSelector(getName);
-  const personalInformation = useSelector(getPersonalInformation);
-  const skillSetList = useSelector(getSkillsetList);
+  const { name, personalInformation, skillsetList} = useArthur();
+  console.log("this context", useArthur());
 
   return (
     <section className={styles.Sidebar}>
@@ -24,7 +16,7 @@ export default function Sidebar() {
         <img src="/profile-at OPT.jpg" />
       </div>
       <Personal personalInformation={personalInformation} />
-      {skillSetList.map(skillSet => (
+      {skillsetList.map(skillSet => (
         <Skillset key={skillSet.name} {...skillSet} />
       ))}
     </section>

@@ -4,19 +4,15 @@ import { useSelector } from 'react-redux';
 import Education from '../Education';
 import WorkExperience from '../WorkExperience';
 
-import {
-  getEducation,
-  getWorkExperienceList,
-} from '../../store/store';
+import { useArthur } from '../../contexts/ArthurContext';
 
 export default function Sidebar() {
-  const educationData = useSelector(getEducation);
-  const workExperienceList = useSelector(getWorkExperienceList);
+  const { education, workExperienceList } = useArthur();
 
   return (
     <section className={styles.MainContent}>
-      <Education {...educationData} />
+      <Education {...education} />
       <WorkExperience workExperienceList={workExperienceList} />
     </section>
-  )
+  );
 }
