@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "baseUrl": "src",
+    "sourceMap": true
+  },
+  "include": [
+    "declarations.d.ts",
+    "next-env.d.ts",
+    "emotion.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "node_modules/@sendbird/uikit-react/index.d.ts"
+  ],
+  "files": ["node_modules/@sendbird/uikit-react/index.d.ts"],
+  "exclude": ["node_modules", "flown-scripts"]
+}

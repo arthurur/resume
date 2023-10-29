@@ -1,4 +1,5 @@
-import styles from './education.module.scss'
+import React from "react";
+import styles from "./education.module.scss";
 
 export default function Education({ title, graduation, duration, university }) {
   console.log(title);
@@ -11,5 +12,5 @@ export default function Education({ title, graduation, duration, university }) {
       </div>
       <span className="text-location">{university}</span>
     </section>
-  )
+  );
 }

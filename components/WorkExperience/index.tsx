@@ -1,14 +1,22 @@
-import styles from './work-experience.module.scss'
+import React from "react";
+import styles from "./work-experience.module.scss";
+import { WorkExperienceEntry } from "../../contexts/types";
 
-export default function WorkExperience({ workExperienceList }) {
+type WorkExperienceProps = {
+  workExperienceList: WorkExperienceEntry[];
+};
+
+export default function WorkExperience({
+  workExperienceList,
+}: WorkExperienceProps) {
   return (
     <section>
       <h2 className="section-title">Work Experience</h2>
-      {workExperienceList.map(experience => (
-        <Experience key={experience.name} {...experience} />
+      {workExperienceList.map((experience) => (
+        <Experience key={experience.company.name} {...experience} />
       ))}
     </section>
-  )
+  );
 }
 
 function Experience({ position, duration, company, bullets }) {
@@ -23,8 +31,10 @@ function Experience({ position, duration, company, bullets }) {
       </div>
       <span>{company.description}</span>
       <ul className={styles.bulletList}>
-        {bullets.map(bullet => <li>{bullet}</li>)}
+        {bullets.map((bullet) => (
+          <li>{bullet}</li>
+        ))}
       </ul>
     </div>
-  )
+  );
 }
