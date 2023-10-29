@@ -1,7 +1,6 @@
 import React from "react";
 import { createContext, useState, useContext } from "react";
 import { Skill, WorkExperienceEntry } from "./types";
-import dayjs from "dayjs";
 
 export const SKILL_SET_TYPES = {
   MAJOR: "major",
@@ -155,10 +154,7 @@ const initialState = {
     },
     {
       position: "FullStack Developer",
-      duration: `Jun 2015 - Apr 2016 (${dayjs("Apr 2016").diff(
-        "Jun 2015",
-        "month"
-      )} months)`,
+      duration: "Jun 2015 - Apr 2016",
       company: {
         name: "LabTIC UDESC, Florianópolis, SC, Brazil",
         link: "http://labtic.udesc.br/",
