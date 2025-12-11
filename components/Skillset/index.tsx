@@ -38,8 +38,21 @@ export default function SkillList({ name, type, skillList }) {
 
 function SkillLevel({ level }) {
   const levelMarks: ReactNode[] = [];
+  const maxLevel = 5;
+
+  // Filled diamonds for the current level
   for (let i = 0; i < level; i++) {
-    levelMarks.push(<span className={styles.skillLevelMark} />);
+    levelMarks.push(
+      <span key={`filled-${i}`} className={styles.skillLevelMark} />
+    );
   }
+
+  // Hollow diamonds for remaining levels
+  for (let i = level; i < maxLevel; i++) {
+    levelMarks.push(
+      <span key={`hollow-${i}`} className={styles.skillLevelMarkHollow} />
+    );
+  }
+
   return <div className="content-block--flex">{levelMarks}</div>;
 }

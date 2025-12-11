@@ -1,4 +1,4 @@
-@import '../../styles/vars';
+@import "../../styles/vars";
 
 .skill {
   display: flex;
@@ -13,4 +13,14 @@
   margin-left: 8px;
   transform: rotate(45deg);
   width: 12px;
+}
+
+.skillLevelMarkHollow {
+  background-color: transparent;
+  border: 2px solid $color-pink-light;
+  height: 12px;
+  margin-left: 8px;
+  transform: rotate(45deg);
+  width: 12px;
+  box-sizing: border-box;
 }
