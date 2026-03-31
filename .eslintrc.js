@@ -9,12 +9,8 @@ module.exports = {
     ".eslintrc.js",
     "public",
     "node_modules",
-    "generated",
     "*.js",
-    "lib",
-    "design",
-    "flown-scripts",
-    "cypress.config.ts",
+    ".next",
   ],
   plugins: ["@typescript-eslint"],
   extends: [
@@ -22,7 +18,6 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:storybook/recommended",
     "next",
   ],
   env: {
@@ -64,7 +59,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: "16.13",
+      version: "detect",
     },
   },
 };

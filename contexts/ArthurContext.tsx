@@ -1,30 +1,43 @@
-import React from "react";
-import { createContext, useState, useContext } from "react";
+"use client";
+
+import { createContext, useContext } from "react";
+import type { ReactNode } from "react";
 import { Skill, WorkExperienceEntry } from "./types";
 
 export const SKILL_SET_TYPES = {
   MAJOR: "major",
   MINOR: "minor",
+} as const;
+
+type SkillSetType = (typeof SKILL_SET_TYPES)[keyof typeof SKILL_SET_TYPES];
+
+type PersonalInformationItem = {
+  type: string;
+  value: string;
+};
+
+type Education = {
+  title: string;
+  graduation: string;
+  duration: string;
+  university: string;
+};
+
+type SkillSet = {
+  name: string;
+  type: SkillSetType;
+  skillList: Skill[];
 };
 
 type ArthurContextData = {
   name: string;
-  personalInformation: { type: string; value: string }[];
-  skillsetList: {
-    name: string;
-    type: string;
-    skillList: Skill[];
-  }[];
-  education: {
-    title: string;
-    graduation: string;
-    duration: string;
-    university: string;
-  };
+  personalInformation: PersonalInformationItem[];
+  skillsetList: SkillSet[];
+  education: Education;
   workExperienceList: WorkExperienceEntry[];
 };
 
-const initialState = {
+const initialState: ArthurContextData = {
   name: "ARTHUR UBERTI ROLIM",
   personalInformation: [
     { type: "Based in", value: "Florianópolis, Santa Catarina, Brazil" },
@@ -37,7 +50,7 @@ const initialState = {
       type: SKILL_SET_TYPES.MAJOR,
       skillList: [
         { name: "Portuguese", level: 5 },
-        { name: "English", level: 4 },
+        { name: "English", level: 5 },
         { name: "Spanish", level: 3 },
         // { name: "Italian", level: 1 },
       ],
@@ -66,7 +79,6 @@ const initialState = {
         { name: "Mobile app development" },
         { name: "Git" },
         { name: "Stripe" },
-        { name: "Paypal" },
       ],
     },
   ],
@@ -98,10 +110,10 @@ const initialState = {
       position: "FullStack Engineer",
       duration: "May 2021 - Jul 2021",
       company: {
-        name: "Clevertech, New York, NY (Remote)",
-        link: "https://www.clevertech.biz/",
+        name: "Lumenalta, New York, NY (Remote)",
+        link: "https://lumenalta.com/",
         description:
-          "Clevertech builds core operating technologies, mobile apps and complex web applications that drive business growth while solving our clients' challenges.",
+          "Lumenalta builds core operating technologies, mobile apps and complex web applications that drive business growth while solving our clients' challenges.",
       },
       bullets: [
         "Worked with the internal hiring management system, one of the most important internal applications",
@@ -127,7 +139,7 @@ const initialState = {
       ],
     },
     {
-      position: "Frontend Developer",
+      position: "Frontend Engineer",
       duration: "Aug 2017 - Mar 2019",
       company: {
         name: "OnsignTV, Florianópolis, SC, Brazil",
@@ -142,7 +154,7 @@ const initialState = {
       ],
     },
     {
-      position: "FullStack Developer",
+      position: "FullStack Engineer",
       duration: "Jan 2016 - Dec 2016",
       company: {
         name: "myTapp, Florianópolis, SC, Brazil",
@@ -156,41 +168,18 @@ const initialState = {
         "Collaborated for the growth of this succeeding Startup on their second year of operation",
       ],
     },
-    {
-      position: "FullStack Developer",
-      duration: "Jun 2015 - Apr 2016",
-      company: {
-        name: "LabTIC UDESC, Florianópolis, SC, Brazil",
-        link: "http://labtic.udesc.br/",
-        description:
-          "LabTIC is a web development laboratory at the Santa Catarina State University.",
-      },
-      bullets: [
-        "First experience with web development",
-        "Learned mainly HTML, CSS, Javascript and some other technologies such as AngularJS and NodeJS",
-        "Participated on the development of 3 projects with a development team",
-      ],
-    },
-    // {
-    //   position: "Rental Shop Clerk",
-    //   duration: "Dec 2014 - Mar 2015",
-    //   company: {
-    //     name: "Heavenly Sports, South Lake Tahoe, CA",
-    //     link: "https://www.skiheavenly.com/",
-    //     description:
-    //       "Heavenly is a premium snow resort, and a Vail Resorts company.",
-    //   },
-    //   bullets: [
-    //     "Learned and lived the culture of quality service and focus on giving the customers the best experience possible",
-    //     "International experience, worked with people from many different countries, improving a lot my English proficiency, and even some Spanish",
-    //   ],
-    // },
   ],
 };
 
 export const ArthurContext = createContext({} as ArthurContextData);
 
-export function ArthurContextProvider({ children }) {
+type ArthurContextProviderProps = {
+  children: ReactNode;
+};
+
+export function ArthurContextProvider({
+  children,
+}: ArthurContextProviderProps) {
   return (
     <ArthurContext.Provider value={{ ...initialState }}>
       {children}

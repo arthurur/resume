@@ -1,58 +1,75 @@
-import React, { ReactNode } from "react";
-import styles from "./skill-list.module.scss";
+import type { ReactNode } from "react";
 import { SKILL_SET_TYPES } from "../../contexts/ArthurContext";
 import { Skill } from "../../contexts/types";
-const { MAJOR, MINOR } = SKILL_SET_TYPES;
+
+const { MAJOR } = SKILL_SET_TYPES;
+type SkillSetType = (typeof SKILL_SET_TYPES)[keyof typeof SKILL_SET_TYPES];
 
 type SkillListProps = {
   name: string;
-  type: string;
+  type: SkillSetType;
   skillList: Skill[];
 };
 
-export default function SkillList({ name, type, skillList }) {
+export default function SkillList({ name, type, skillList }: SkillListProps) {
+  const displayName = name === "Also" ? "Tools & Domains" : name;
+
+  if (type !== MAJOR) {
+    return (
+      <div>
+        <h2 className="font-display text-xl text-maroon mb-3">
+          {displayName}
+        </h2>
+        <div className="flex flex-wrap gap-2">
+          {skillList.map((skill) => (
+            <span
+              key={skill.name}
+              className="px-3 py-1 rounded-full bg-rose/10 text-text-secondary text-xs font-medium"
+            >
+              {skill.name}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.Skillset}>
-      <h2 className="section-title">{name}</h2>
-      <ul className={[styles["skill-list"], "padded-list"].join(" ")}>
-        {skillList.map((skill) => {
-          if (type === MAJOR) {
-            return (
-              <li className={styles.skill} key={skill.name}>
-                <span>{skill.name}</span>
-                <SkillLevel level={skill.level} />
-              </li>
-            );
-          } else {
-            return (
-              <li key={skill.name}>
-                <span className="">{skill.name}</span>
-              </li>
-            );
-          }
-        })}
+    <div>
+      <h2 className="font-display text-xl text-maroon mb-3">{displayName}</h2>
+      <ul className="space-y-2">
+        {skillList.map((skill) => (
+          <li key={skill.name} className="flex items-center justify-between">
+            <span className="text-sm text-text">{skill.name}</span>
+            <SkillLevel level={skill.level} />
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
 
-function SkillLevel({ level }) {
-  const levelMarks: ReactNode[] = [];
+type SkillLevelProps = {
+  level?: number;
+};
+
+function SkillLevel({ level = 0 }: SkillLevelProps) {
   const maxLevel = 5;
+  const marks: ReactNode[] = [];
 
-  // Filled diamonds for the current level
-  for (let i = 0; i < level; i++) {
-    levelMarks.push(
-      <span key={`filled-${i}`} className={styles.skillLevelMark} />
+  for (let i = 0; i < maxLevel; i++) {
+    const isFilled = i < level;
+    marks.push(
+      <span
+        key={i}
+        className={`inline-block h-2.5 w-2.5 rotate-45 ${
+          isFilled
+            ? "bg-rose"
+            : "border border-rose/40 bg-transparent"
+        }`}
+      />
     );
   }
 
-  // Hollow diamonds for remaining levels
-  for (let i = level; i < maxLevel; i++) {
-    levelMarks.push(
-      <span key={`hollow-${i}`} className={styles.skillLevelMarkHollow} />
-    );
-  }
-
-  return <div className="content-block--flex">{levelMarks}</div>;
+  return <div className="flex items-center gap-1.5">{marks}</div>;
 }
